@@ -86,6 +86,12 @@ public class AdminForm extends JFrame {
 		contentPane.add(btnGestionDesUtilisateurs);
 
 		JButton btnGestionDesPilotes = new JButton("Gestion des Pilotes");
+		btnGestionDesPilotes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new PiloteManagerForm().setVisible(true);
+				dispose();
+			}
+		});
 		btnGestionDesPilotes.setFont(new Font("Lucida Grande", Font.BOLD, 16));
 		btnGestionDesPilotes.setBounds(44, 196, 259, 82);
 		contentPane.add(btnGestionDesPilotes);
@@ -100,6 +106,7 @@ public class AdminForm extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new LigneManagerForm().setVisible(true);
+				dispose();
 			}
 		});
 		btnGestionDesLignes.setFont(new Font("Lucida Grande", Font.BOLD, 16));

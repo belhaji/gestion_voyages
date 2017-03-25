@@ -1,6 +1,7 @@
 package service;
 
 
+import models.Ligne;
 import models.Pilote;
 
 import java.sql.Connection;
@@ -73,7 +74,7 @@ public class PiloteManager {
         Statement statement = connection.createStatement();
         statement.execute(sql);
     }
-
+    
     public void update(int piloteId, Pilote pilote) throws SQLException {
         String sql = "UPDATE pilote SET nom = '" + pilote.getNom() + "', " +
                 "prenom = '" + pilote.getPrenom() + "'," +
@@ -82,4 +83,17 @@ public class PiloteManager {
         Statement statement = connection.createStatement();
         statement.execute(sql);
     }
+
+	public Pilote findLast() throws SQLException {
+		String sql = "SELECT * FROM pilote ORDER BY id DESC LIMIT 1";
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery(sql);
+        if (rs == null)
+            throw new SQLException("Cannot get pilote ResultSet");
+        Pilote pilote= null;
+        if (rs.next()) {
+            pilote = parsePilote(rs);
+        }
+        return pilote;
+	}
 }
