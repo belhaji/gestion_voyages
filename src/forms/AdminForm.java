@@ -92,11 +92,18 @@ public class AdminForm extends JFrame {
 				dispose();
 			}
 		});
+		
 		btnGestionDesPilotes.setFont(new Font("Lucida Grande", Font.BOLD, 16));
 		btnGestionDesPilotes.setBounds(44, 196, 259, 82);
 		contentPane.add(btnGestionDesPilotes);
 
 		JButton btnGestionDesAvions = new JButton("Gestion des avions");
+		btnGestionDesAvions.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new AvionManagerForm().setVisible(true);
+				dispose();
+			}
+		});
 		btnGestionDesAvions.setFont(new Font("Lucida Grande", Font.BOLD, 16));
 		btnGestionDesAvions.setBounds(401, 196, 259, 82);
 		contentPane.add(btnGestionDesAvions);
@@ -113,7 +120,7 @@ public class AdminForm extends JFrame {
 		btnGestionDesLignes.setBounds(401, 87, 259, 82);
 		contentPane.add(btnGestionDesLignes);
 
-		JLabel lblGreetingMessage = new JLabel("Greeting Message");
+		JLabel lblGreetingMessage = new JLabel("Espace d'administration ");
 		lblGreetingMessage.setFont(new Font("Menlo", Font.PLAIN, 16));
 		lblGreetingMessage.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGreetingMessage.setBounds(44, 6, 616, 42);

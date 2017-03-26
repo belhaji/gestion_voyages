@@ -87,4 +87,16 @@ public class AvionManager {
         Statement statement = connection.createStatement();
         statement.execute(sql);
     }
+    public Avion findLast() throws SQLException {
+		String sql = "SELECT * FROM avion ORDER BY id DESC LIMIT 1";
+		Statement statement = connection.createStatement();
+		ResultSet rs = statement.executeQuery(sql);
+		if (rs == null)
+			throw new SQLException("Cannot get pilote ResultSet");
+		Avion avion = null;
+		if (rs.next()) {
+			avion = parseAvion(rs);
+		}
+		return avion;
+	}
 }
