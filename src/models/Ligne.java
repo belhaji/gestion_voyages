@@ -49,12 +49,15 @@ public class Ligne {
 
     @Override
     public String toString() {
-        return "Ligne{" +
-                "id=" + id +
-                ", airoportAller='" + airoportAller + '\'' +
-                ", airoportArriver='" + airoportArriver + '\'' +
-                ", prixClass=" + prixClass +
-                ", prixNormale=" + prixNormale +
-                '}';
+        return  airoportAller + " - " + airoportArriver ;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+    	if (obj == null || !(obj instanceof Ligne)) {
+			return false;
+		}
+    	Ligne ligne = (Ligne) obj;
+    	return ligne.getId() == id;
     }
 }

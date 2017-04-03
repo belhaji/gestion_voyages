@@ -3,6 +3,7 @@ package service;
 
 import models.Client;
 import models.Ligne;
+import models.Pilote;
 import models.Reservation;
 
 import java.sql.*;
@@ -94,5 +95,18 @@ public class ReservationManager {
         Statement statement = connection.createStatement();
         statement.execute(sql);
     }
+
+	public Reservation findLast() throws SQLException {
+		String sql = "SELECT * FROM reservation ORDER BY id DESC LIMIT 1";
+		Statement statement = connection.createStatement();
+		ResultSet rs = statement.executeQuery(sql);
+		if (rs == null)
+			throw new SQLException("Cannot get ResultSet");
+		Reservation reservation = null;
+		if (rs.next()) {
+			reservation = parseReservation(rs);
+		}
+		return reservation;
+	}
 
 }

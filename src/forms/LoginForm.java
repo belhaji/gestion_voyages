@@ -59,7 +59,11 @@ public class LoginForm extends JFrame {
 							userForm.setVisible(true);
 						}
 						dispose();
-					} catch (SQLException e1) {
+					} catch (Exception e1) {
+						JOptionPane.showMessageDialog(LoginForm.this,
+								"Erreur de connection avec la base de données",
+							    "Error",
+							    JOptionPane.ERROR_MESSAGE);
 						e1.printStackTrace();
 					} 
 				}else {

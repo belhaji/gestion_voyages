@@ -1,6 +1,6 @@
 package models;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Reservation {
     private int id;
@@ -74,4 +74,5 @@ public class Reservation {
                 ", ligne=" + ligne +
                 '}';
     }
+    
 }

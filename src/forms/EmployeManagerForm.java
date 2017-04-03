@@ -32,7 +32,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
-public class EmployeeManagerForm extends JFrame {
+
+public class EmployeManagerForm extends JFrame {
 	class TableModel extends AbstractTableModel {
 		private String[] columns = { "ID", "NOM", "PRENOM", "EMAIL", "LOGIN", "PASSWORD", "ROLE", "ACTIVE" };
 		private List<Employe> employes;
@@ -126,7 +127,7 @@ public class EmployeeManagerForm extends JFrame {
 	 * Create the frame.
 	 */
 	
-	public EmployeeManagerForm() {
+	public EmployeManagerForm() {
 		this.addWindowListener(new WindowListener() {
 			
 			@Override
@@ -228,7 +229,7 @@ public class EmployeeManagerForm extends JFrame {
 					employe.setActive(checkBoxActive.isSelected() ? 1 : 0);
 					employeManager.add(employe);
 					tableModel.getEmployes().add(employeManager.findByLogin(employe.getLogin()));
-					JOptionPane.showMessageDialog(EmployeeManagerForm.this, "l'employee a été ajouter");
+					JOptionPane.showMessageDialog(EmployeManagerForm.this, "l'employee a été ajouter");
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -245,7 +246,7 @@ public class EmployeeManagerForm extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				int row = table.getSelectedRow();
 				if (row < 0) {
-					JOptionPane.showMessageDialog(EmployeeManagerForm.this, "Veuillez selectionner une ligne ");
+					JOptionPane.showMessageDialog(EmployeManagerForm.this, "Veuillez selectionner une ligne ");
 				} else {
 					try {
 						Employe employe = tableModel.getEmployes().get(row);
@@ -259,7 +260,7 @@ public class EmployeeManagerForm extends JFrame {
 								.findByName(roleComboBox.getSelectedItem().toString());
 						employe.setRole(role);
 						employeManager.update(employe.getId(), employe);
-						JOptionPane.showMessageDialog(EmployeeManagerForm.this, "l'employee a été modifier");
+						JOptionPane.showMessageDialog(EmployeManagerForm.this, "l'employee a été modifier");
 					} catch (SQLException e1) {
 						e1.printStackTrace();
 					}

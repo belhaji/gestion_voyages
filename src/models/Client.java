@@ -67,14 +67,16 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" +
-                "id=" + id +
-                ", nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", email='" + email + '\'' +
-                ", numPassport='" + numPassport + '\'' +
-                ", cin='" + cin + '\'' +
-                ", adresse='" + adresse + '\'' +
-                '}';
+        return nom +" "+prenom+ " | " + numPassport;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+    	if (obj == null || !(obj instanceof Client) ) {
+			return false;
+		}
+    	Client client = (Client) obj;
+    	
+    	return client.cin.equals(cin) ;
     }
 }

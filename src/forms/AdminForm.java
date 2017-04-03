@@ -77,7 +77,7 @@ public class AdminForm extends JFrame {
 		btnGestionDesUtilisateurs.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new EmployeeManagerForm().setVisible(true);
+				new EmployeManagerForm().setVisible(true);
 				dispose();
 			}
 		});

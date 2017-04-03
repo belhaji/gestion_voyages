@@ -2,6 +2,7 @@ package service;
 
 
 import models.Client;
+import models.Employe;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -96,6 +97,19 @@ public class ClientManager {
                 " WHERE id = " + clientId;
         Statement statement = connection.createStatement();
         statement.execute(sql);
+    }
+    
+    public Client findLast() throws SQLException {
+        String sql = "SELECT * FROM client ORDER BY id DESC LIMIT 1";
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery(sql);
+        if (rs == null)
+            throw new SQLException("Cannot get ResultSet");
+        Client client = null;
+        if (rs.next()) {
+            client = parseClient(rs);
+        }
+        return client;
     }
 
 }

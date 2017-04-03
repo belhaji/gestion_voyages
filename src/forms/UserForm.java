@@ -76,6 +76,12 @@ public class UserForm extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnGestionDesClients = new JButton("Gestion des clients");
+		btnGestionDesClients.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new ClientManagerForm().setVisible(true);
+				dispose();
+			}
+		});
 		btnGestionDesClients.setFont(new Font("Lucida Grande", Font.BOLD, 16));
 		btnGestionDesClients.setBounds(88, 102, 272, 76);
 		contentPane.add(btnGestionDesClients);
@@ -84,13 +90,15 @@ public class UserForm extends JFrame {
 		btnGestionDesReservations.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				new ReservationManagerForm().setVisible(true);
+				dispose();
 			}
 		});
 		btnGestionDesReservations.setFont(new Font("Lucida Grande", Font.BOLD, 16));
 		btnGestionDesReservations.setBounds(88, 210, 272, 76);
 		contentPane.add(btnGestionDesReservations);
 		
-		JLabel lblGreetingMessage = new JLabel("Greeting Message");
+		JLabel lblGreetingMessage = new JLabel("Espace Utilisateur");
 		lblGreetingMessage.setFont(new Font("Menlo", Font.PLAIN, 16));
 		lblGreetingMessage.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGreetingMessage.setBounds(88, 29, 272, 35);
