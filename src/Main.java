@@ -10,8 +10,8 @@ public class Main {
 			@Override
 			public void run() {
 				try {
-					LoginForm frame = new LoginForm();
-					frame.setVisible(true);
+					LoginForm login = new LoginForm();
+					login.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

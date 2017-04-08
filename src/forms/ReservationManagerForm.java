@@ -9,6 +9,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.AbstractTableModel;
 
 import com.sun.org.apache.bcel.internal.generic.NEW;
+import com.sun.org.apache.xpath.internal.compiler.Keywords;
 
 import db.ConnectionManager;
 import javafx.scene.control.ComboBox;
@@ -235,6 +236,7 @@ public class ReservationManagerForm extends JFrame {
 	private BoxModelLigne boxModelLigne;
 	private JTable table;
 	private TableModel tableModel = null;
+	private JTextField txtRecherche;
 
 	/**
 	 * Create the frame.
@@ -401,6 +403,30 @@ public class ReservationManagerForm extends JFrame {
 		cbxLigne.setModel(boxModelLigne);
 		cbxLigne.setSelectedIndex(0);
 		contentPane.add(cbxLigne);
+		txtRecherche = new JTextField();
+		txtRecherche.setBounds(675, 331, 175, 28);
+		contentPane.add(txtRecherche);
+		txtRecherche.setColumns(10);
+		
+		JButton btnRechercher = new JButton("Rechercher");
+		btnRechercher.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String keyword = txtRecherche.getText();
+				List<Reservation> reservations;
+				try {
+					reservations = reservationManager.rechercher(keyword);
+					tableModel.getReservations().clear();
+					tableModel.getReservations().addAll(reservations);
+					((AbstractTableModel) table.getModel()).fireTableDataChanged();
+					table.repaint();				
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		btnRechercher.setBounds(546, 332, 117, 29);
+		contentPane.add(btnRechercher);
 
 	}
 }

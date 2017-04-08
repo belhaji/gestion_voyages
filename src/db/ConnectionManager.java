@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+
+// singleton
 public class ConnectionManager {
     private static final String DB_USER = "root";
     private static final String DB_PASS = "";

@@ -109,4 +109,18 @@ public class ReservationManager {
 		return reservation;
 	}
 
+	public List<Reservation> rechercher(String keyword) throws SQLException {
+		String sql = "SELECT * FROM reservation WHERE class LIKE '%"+keyword+"%' OR type LIKE '%"+keyword+"%'";
+		Statement statement = connection.createStatement();
+		ResultSet rs = statement.executeQuery(sql);
+		if (rs == null)
+			throw new SQLException("Cannot get ResultSet");
+		List<Reservation> reservations = new ArrayList<>();
+		while (rs.next()) {
+            Reservation reservation = parseReservation(rs);
+            reservations.add(reservation);
+        }
+        return reservations;
+	}
+
 }

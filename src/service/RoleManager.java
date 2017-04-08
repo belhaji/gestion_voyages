@@ -65,7 +65,6 @@ public class RoleManager {
 
     public void delete(int roleId) throws SQLException {
         String sql = "DELETE FROM role WHERE id = " + roleId;
-
         Statement statement = connection.createStatement();
         statement.execute(sql);
     }
